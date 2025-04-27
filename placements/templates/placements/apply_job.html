@@ -1,0 +1,19 @@
+{% load static %}
+{% include 'placements/navbar.html' %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Apply for Job - Placement App</title>
+    <link rel="stylesheet" href="{% static 'placements/css/style.css' %}">
+</head>
+<body>
+    <h1>Apply for {{ job.title }}</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Confirm Application</button>
+    </form>
+
+    <a href="{% url 'dashboard_student' %}">Back to Dashboard</a>
+</body>
+</html>

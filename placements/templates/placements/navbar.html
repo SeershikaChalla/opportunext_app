@@ -1,0 +1,79 @@
+{% load static %}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<style>
+    /* Navbar Background */
+    .navbar-custom {
+        background: #ffffff;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 12px 20px;
+    }
+
+    /* Brand/Logo */
+    .navbar-custom .navbar-brand {
+        color: #0077b6;
+        font-weight: bold;
+        font-size: 26px;
+        letter-spacing: 1px;
+    }
+
+    /* Navbar Links */
+    .navbar-custom .nav-link {
+        color: #0077b6;
+        font-weight: 600;
+        margin-right: 20px;
+        font-size: 16px;
+        transition: color 0.3s ease;
+    }
+
+    .navbar-custom .nav-link:hover {
+        color: #023e8a;
+        text-decoration: underline;
+    }
+
+    /* Profile Pic */
+    .profile-pic {
+        width: 40px;
+        height: 40px;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 2px solid #0077b6;
+        margin-left: 10px;
+    }
+</style>
+
+<nav class="navbar navbar-expand-lg navbar-custom sticky-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="{% url 'home' %}">OPPORTUNEXT</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
+        {% if user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'dashboard_student' %}">Jobs</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'notifications' %}">Notifications</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'profile_settings' %}">Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+          </li>
+          <li class="nav-item">
+            <img src="{{ user.profile.profile_image.url }}" alt="Profile" class="profile-pic">
+          </li>
+        {% else %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'login' %}">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'register' %}">Register</a>
+          </li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</nav>

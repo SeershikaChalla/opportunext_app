@@ -1,0 +1,36 @@
+{% load static %}
+{% include 'placements/navbar.html' %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Dashboard - Placement App</title>
+    <link rel="stylesheet" href="{% static 'placements/css/style.css' %}">
+</head>
+<body>
+    <h1>Student Dashboard</h1>
+    <h2>Available Jobs:</h2>
+    <ul>
+        {% for job in jobs %}
+            <li>
+                <a href="{% url 'job_detail' job.id %}">{{ job.title }}</a> - {{ job.company.name }}
+            </li>
+        {% empty %}
+            <li>No jobs available.</li>
+        {% endfor %}
+    </ul>
+    <table>
+        <tr>
+            <th>Job Title</th>
+            <th>Status</th>
+        </tr>
+        {% for application in applications %}
+            <tr>
+                <td>{{ application.job.title }}</td>
+                <td>{{ application.status }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    
+    <a href="{% url 'home' %}">Back to Home</a>
+</body>
+</html>

@@ -1,0 +1,14 @@
+{% load static %}
+{% include 'placements/navbar.html' %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Placement App - Home</title>
+    <link rel="stylesheet" href="{% static 'placements/css/style.css' %}">
+</head>
+<body>
+    <h1>Welcome to the Placement Portal</h1>
+    <a href="{% url 'register' %}">Register</a> |
+    <a href="{% url 'login' %}">Login</a>
+</body>
+</html>

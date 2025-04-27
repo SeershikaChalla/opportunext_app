@@ -1,0 +1,23 @@
+{% load static %}
+{% include 'placements/navbar.html' %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Job List - Placement App</title>
+    <link rel="stylesheet" href="{% static 'placements/css/style.css' %}">
+</head>
+<body>
+    <h1>Job Listings</h1>
+    <ul>
+        {% for job in jobs %}
+            <li>
+                <a href="{% url 'job_detail' job.id %}">{{ job.title }}</a> ({{ job.company.name }})
+            </li>
+        {% empty %}
+            <li>No jobs found.</li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'dashboard_student' %}">Back to Dashboard</a>
+
+</body>
+</html>

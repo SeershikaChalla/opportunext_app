@@ -1,0 +1,15 @@
+{% load static %}
+{% include 'placements/navbar.html' %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Company Dashboard - Placement App</title>
+    <link rel="stylesheet" href="{% static 'placements/css/style.css' %}">
+</head>
+<body>
+    <h1>Company Dashboard</h1>
+    <p>Welcome, Company Representative!</p>
+    <!-- Add company-specific content here -->
+    <a href="{% url 'home' %}">Back to Home</a>
+</body>
+</html>

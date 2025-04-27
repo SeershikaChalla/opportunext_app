@@ -1,0 +1,22 @@
+{% load static %}
+{% include 'placements/navbar.html' %}
+
+<h1 class="text-center">Notifications</h1>
+
+<div class="container mt-5">
+    {% if notifications %}
+        <ul class="list-group">
+            {% for notification in notifications %}
+                <li class="list-group-item {% if not notification.is_read %} bg-light {% endif %}">
+                    <p class="mb-1">{{ notification.message }}</p>
+                    <small class="text-muted">{{ notification.created_at|date:"F j, Y, g:i a" }}</small>
+                    {% if not notification.is_read %}
+                        <a href="{% url 'mark_notification_read' notification.id %}" class="btn btn-sm btn-primary float-right">Mark as Read</a>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No new notifications.</p>
+    {% endif %}
+</div>
